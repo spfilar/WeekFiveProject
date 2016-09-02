@@ -32,6 +32,10 @@ body {
 	color: white;
 }
 
+.navbar-nav .open .dropdown-menu>li>a:hover {
+	color: black;
+}
+
 #full-list {
 	text-align: center;
 	color: white;
