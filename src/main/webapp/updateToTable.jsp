@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1"%>
 <%@ page import="com.nationalparks.*" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -9,9 +9,9 @@
 		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-		<title>View List</title>
+		<title>Update a Park's Info</title>
 	</head>
+	
 	<body>
 		<nav class="navbar navbar-inverse navbar-fixed-top">
 			<div class="container-fluid">
@@ -33,38 +33,43 @@
 				</ul>
 			</div>
 		</nav>
-		<p id="list">List of National Parks</p>
-		<div>
-			<table class="table">
-				<tr>
-					<th>ID Number</th>
-					<th>Park Name</th>
-					<th>City</th>
-					<th>State</th>
-					<th>Year Established</th>
-					<th>Entry Fee</th>
-				</tr>
-				
-				<%
-					DAO.readFromTable();
-				%>
-				<%
-					for (int i = 0; i < DAO.myParks.size(); i++) {
-						ParkInfo readToJSP = DAO.myParks.get(i);
-				%>
-				<tr>
-					<td><%=readToJSP.getParkID()%></td>
-					<td><%=readToJSP.getParkName()%></td>
-					<td><%=readToJSP.getParkCity()%></td>
-					<td><%=readToJSP.getParkState()%></td>
-					<td><%=readToJSP.getParkYearEst()%></td>
-					<td><%=readToJSP.getParkFee()%></td>
-				<tr>
-				<%
-					}
-					DAO.myParks.clear();
-				%>
-			</table>
+		<p id="list">Update National Park</p>
+		<% 
+			DAO.readFromTable();
+		%>
+		<div id="thedropdown">
+			<form id="updating" action="updateToTable" method="post">
+				<div class="update-group">
+					<select id="box" name="updatename">
+						<option selected="selected" style="display:none">Select a Park to Update</option>
+					<%		
+						for (int i = 0; i < DAO.myParks.size(); i++) {
+							ParkInfo readToJSP = DAO.myParks.get(i);
+					%>
+						<option id="dropthebox"><%=readToJSP.getParkName()%></option>
+					<% }
+						DAO.myParks.clear();
+					%>
+					</select>
+				</div>	
+				<div class="update-group">
+					City/County:
+					<input type="text" class="form-control" name="updatecity">
+				</div><br>
+				<div class="update-group">
+					State:
+					<input type="text" class="form-control" name="updatestate">
+				</div><br>
+				<div class="update-group">
+					Year Established:
+					<input type="text" class="form-control" name="updateyear">
+				</div><br>
+				<div class="update-group">
+					Entry Fee:
+					<input type="text" class="form-control" name="updatefee">
+				</div><br>
+				<button type="submit" value="Submit" class="btn btn-primary pull-right">Submit</button>
+			</form>
 		</div>
 	</body>
 </html>

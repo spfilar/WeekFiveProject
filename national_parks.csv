@@ -1,0 +1,10 @@
+"parks_id";"parks_name";"parks_city";"parks_state";"parks_year";"parks_fee"
+1;"Acadia";"Mount Desert Island";"Maine";1919;20
+3;"Biscayne";"Biscayne County";"Florida";1980;40
+4;"Denali";"Denali Borough";"Alaska";1917;100
+5;"Grand Teton";"Teton County";"Wyoming";1929;35
+7;"Badlands";"Jackson County";"South Dakota";1939;85
+8;"Everglades";"Miami-Dade County";"Florida";1934;40
+9;"Mount Rainier";"Pierce County";"Washington";1899;500
+10;"Redwood";"Humboldt County";"California";1968;50
+11;"Theodore Roosevelt";"Billings County";"North Dakota";1978;65

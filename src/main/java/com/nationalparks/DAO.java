@@ -58,10 +58,7 @@ public class DAO {
 	} //readFromDB method
 	
 	public static void writeToTable (ParkInfo park) {
-		
-		ParkInfo parkToAdd = new ParkInfo();
-		parkToAdd = park;
-		
+				
 		try {
 			
 			connectToSQL();
@@ -71,11 +68,11 @@ public class DAO {
 					+ " VALUES "
 					+ "(?, ?, ?, ?, ?)");
 			
-			PREP_STMT.setString(1, parkToAdd.getParkName());
-			PREP_STMT.setString(2, parkToAdd.getParkCity());
-			PREP_STMT.setString(3, parkToAdd.getParkState());
-			PREP_STMT.setInt(4, parkToAdd.getParkYearEst());
-			PREP_STMT.setInt(5, parkToAdd.getParkFee());
+			PREP_STMT.setString(1, park.getParkName());
+			PREP_STMT.setString(2, park.getParkCity());
+			PREP_STMT.setString(3, park.getParkState());
+			PREP_STMT.setInt(4, park.getParkYearEst());
+			PREP_STMT.setInt(5, park.getParkFee());
 			
 			PREP_STMT.executeUpdate();
 					
@@ -86,16 +83,12 @@ public class DAO {
 	
 	public static void deleteFromTable (ParkInfo park) {
 		
-		ParkInfo parkToDelete = new ParkInfo();
-		
-		parkToDelete = park;
-		
 		try {
 			connectToSQL();
 			
 			PREP_STMT = CONN.prepareStatement("DELETE FROM `national_parks`.`parks`"
-					+ "WHERE parks_id = ?");
-			PREP_STMT.setInt(1, parkToDelete.getParkID());
+					+ "WHERE parks_name = ?");
+			PREP_STMT.setString(1, park.getParkName());
 			PREP_STMT.executeUpdate();
 			
 		} catch (SQLException e) {
@@ -105,23 +98,21 @@ public class DAO {
 	
 	public static void updateTheTable(ParkInfo park) {
 		
-		ParkInfo parkToUpdate = new ParkInfo();
-		
-		parkToUpdate = park;
-		
 		
 		try {
 			connectToSQL();
 			
-			PREP_STMT = CONN.prepareStatement("UPDATE `national_parks`.`parks` SET"
-					+ "`parks_name` = ?, `parks_city` = ?, `parks_state` = ?,"
-					+ "`parks_year` = ?, `parks_fee` = ? WHERE `parks_id` = ?;");
-			PREP_STMT.setString(1, parkToUpdate.getParkName());
-			PREP_STMT.setString(2, parkToUpdate.getParkCity());
-			PREP_STMT.setString(3, parkToUpdate.getParkState());
-			PREP_STMT.setInt(4, parkToUpdate.getParkYearEst());
-			PREP_STMT.setInt(5, parkToUpdate.getParkFee());
-			PREP_STMT.setInt(6, parkToUpdate.getParkID());
+			PREP_STMT = CONN.prepareStatement("UPDATE `national_parks`.`parks` SET `parks_city` = ?,"
+					+ " `parks_state` = ?, `parks_year` = ?, `parks_fee` = ?"
+					+ " WHERE `parks_name` = ?;");
+			
+			PREP_STMT.setString(1, park.getParkCity());
+			PREP_STMT.setString(2, park.getParkState());
+			PREP_STMT.setInt(3, park.getParkYearEst());
+			PREP_STMT.setInt(4, park.getParkFee());
+			PREP_STMT.setString(5, park.getParkName());
+			
+			PREP_STMT.executeUpdate();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();

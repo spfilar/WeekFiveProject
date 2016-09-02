@@ -41,7 +41,6 @@ public class updateToTable extends HttpServlet {
 		
 		ParkInfo updateToTable = new ParkInfo();
 		
-		updateToTable.setParkID(Integer.parseInt(request.getParameter("updateid")));
 		updateToTable.setParkName(request.getParameter("updatename"));
 		updateToTable.setParkCity(request.getParameter("updatecity"));
 		updateToTable.setParkState(request.getParameter("updatestate"));

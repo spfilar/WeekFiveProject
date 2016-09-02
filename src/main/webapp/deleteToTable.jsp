@@ -1,13 +1,16 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ page import="com.nationalparks.*" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 		<link rel="stylesheet" type="text/css" href="styles.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
-
-		<title>Add a National Park</title>
+		<script	src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script	src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>Delete a Park</title>
 	</head>
 	<body>
 		<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -30,33 +33,26 @@
 				</ul>
 			</div>
 		</nav>
-		<p id="list">Add National Park</p>
-		<div id="tablecontainer">
-			<div class="inputs">
-				<form class="col-xs-12" action="addToTable" method="post">
-					<div class = "form-group">
-						Name:
-						<input type="text" class="form-control" name="name">
-					</div><br>
-					<div class="form-group">
-						City/County:
-						<input type="text" class="form-control" name="city">
-					</div><br>
-					<div class="form-group">
-						State:
-						<input type="text" class="form-control" name="state">
-					</div><br>
-					<div class="form-group">
-						Year Established:
-						<input type="text" class="form-control" name="year">
-					</div><br>
-					<div class="form-group">
-						Entry Fee to Park:
-						<input type="text" class="form-control" name="fee">
-					</div>
-					<button type="submit" value="Submit" class="btn btn-primary pull-right">Submit</button>
-				</form>
-			</div>
+		<p id="list">Delete National Park</p>
+		<% 
+			DAO.readFromTable();
+		%>
+		<div id="thedropdown">
+			<form id="deleting" action="deleteToTable" method="post">
+				<select id="box" name="deletename" onchange="this.form.submit()">
+					<option selected="selected" style="display:none">Select a Park to Delete</option>
+				<%		
+					for (int i = 0; i < DAO.myParks.size(); i++) {
+						ParkInfo readToJSP = DAO.myParks.get(i);
+				%>
+					<option id="dropthebox"><%=readToJSP.getParkName()%></option>
+				<% }
+
+				DAO.myParks.clear();
+				
+				%>
+				</select>
+			</form>
 		</div>
 	</body>
 </html>

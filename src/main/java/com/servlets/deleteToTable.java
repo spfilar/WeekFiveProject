@@ -41,7 +41,7 @@ public class deleteToTable extends HttpServlet {
 
 		ParkInfo delete = new ParkInfo();
 		
-		delete.setParkID(Integer.parseInt(request.getParameter("deleteid")));
+		delete.setParkName(request.getParameter("deletename"));
 		
 		DAO.deleteFromTable(delete);
 		
