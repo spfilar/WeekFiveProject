@@ -1,0 +1,89 @@
+body {
+	background: url(images/denali2.jpg) no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	font-family: 'Raleway'
+}
+
+.navbar {
+	background-color: black
+}
+
+.nav {
+	margin-left: 10px;
+	margin-right: 20px;
+	margin-top: 13px;
+	font-size: 2.5em;
+	height: 80px;
+	background-color: black;
+}
+
+.navbar-nav .open .dropdown-menu {
+	margin-top: 10px;
+	font-size: .9em;
+	opacity: 2;
+	background-color: transparent;
+	color: black;
+}
+
+.navbar-nav .open .dropdown-menu>li>a {
+	color: black;
+}
+
+#full-list {
+	text-align: center;
+	color: white;
+	position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+	font-size: 4.5em;
+}
+
+.info {
+	font-size: 1.8em;
+} 
+
+.table {
+	width: 85%;
+	margin-left: 7.5%;
+	background: transparent;
+	color: white;
+	text-align: center;
+	font-size: 1.5em;
+	position: absolute;
+    top: 45%;
+}
+
+.table th {
+	text-align: center;
+	border-top: none;
+}
+
+#list {
+	margin-top: 180px;
+	font-weight: bold;
+	text-align: center;
+	font-size: 5em;
+	color: black;
+}
+
+#tablecontainer {
+	margin: 0 auto;
+	width: 550px;
+}
+
+.inputs {
+	margin-top: 135px;
+	color: white;
+	font-size: 1.8em;
+}
+
+.form-group {
+	margin-top: -30px;
+}
